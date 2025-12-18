@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="mediaqueries.css" />
+  <script src="script.js" type="text/javascript"> </script>
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+  </script>
+  <script>
+    function sendMail() {
+          (function() {
+            emailjs.init('7GuAC97f8wm9uNtjB');
+          })();
+
+          const form = document.querySelector('form').value;
+          const fullName = document.getElementById("name").value;
+          const email = document.getElementById("email").value;
+          // const phone = document.getElementById("phone").value;
+          const subject = document.getElementById("subject").value;
+          const message = document.getElementById("message").value;
+
+          if (!email) {
+            alert("Email address is required.");
+            return;
+          }
+
+          var params = {
+            sendname: fullName,
+            email: "jhamaicaqt@gmail.com", // Recipient's email address jhamaicaqt@gmail.com
+            subject: subject,
+            message: message,
+            // phone: phone,
+            replyto: email, // Sender's email address for reply
+          };
+
+          var serviceId = "service_b2mhp0z";
+          var templateId = "template_i3zei4c";
+
+          let send_btn = document.getElementById('sender-btn');
+          send_btn.disabled = true;
+          send_btn.style.opacity = 0.4;
+          send_btn.innerText = "Sending...";
+
+          emailjs.send(serviceId, templateId, params)
+            .then(() => {
+              // alert("Send successful");
+              Swal.fire({
+                title: "Success!",
+                text: "Message Sent Successfully!",
+                icon: "success"
+              });
+
+             document.querySelector('form').reset();
+
+
+
+              send_btn.disabled = false;
+              send_btn.style.opacity = 1;
+              send_btn.innerText = "Send Message";
+            })
+            // .catch(error => {
+            //   Swal.fire({
+            //       title: "Failed!",
+            //       text: "Message Sending Failed!",
+            //       icon: "error"
+            //   });
+            //   send_btn.disabled = false;
+            //   send_btn.style.opacity = 1;
+            //   send_btn.innerText = "Send Message";
+            // });
+        }
+
+  </script>
+
+</head>
+
+<body>
+  <nav id="desktop-nav">
+    <div class="logo">Jhamaica Nicole H. Sombrano</div>
+    <div>
+      <ul class="nav-links">
+        <li><a href="javascript:void(0)" onclick="openModal()">Resume</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+  <!-- <nav id="hamburger-nav">
+    <div class="logo"></div>
+    <div class="menu-links">
+      <li><a href="#projects" onclick="toggleMenu()"></a></li>
+      <li><a href="#about" onclick="toggleMenu()"></a></li>
+      <li><a href="#contact" onclick="toggleMenu()"></a></li>
+    </div>
+    </div>
+  </nav> -->
+  <section id="profile">
+    <div class="section__pic-container">
+      <img src="./assets/picture.jpg" alt="Jhamaica profile picture" />
+    </div>
+    <div class="section__text">
+      <p class="section__text__p1">Hello, I'm</p>
+      <h1 class="title">Jhamaica Nicole <br /> Sombrano</h1>
+      <p class="section__text__p2">BS - Information Technology</p>
+      <div class="btn-container">
+        <button class="btn btn-color-2" <li> <a href="#contact" onclick="toggleMenu()">Contact Info</a></li> </button>
+      </div>
+      <div id="socials-container">
+        <img src="./assets/ig.png" alt="My Instagram profile" class="icon"
+        onclick="window.open('https://www.instagram.com/_jhmcx/', ' _blank')"/>
+        <img src="./assets/images.png" alt="My Facebook profile" class="icon"
+          onclick="window.open('https://www.facebook.com/jhamaicaqt', ' _blank')"/>
+      </div>
+    </div>
+  </section>
+
+  </section>
+
+  <!-- /* ===== PROJECT =====*/ -->
+  <section id="projects">
+    <p class="section__text__p1">Get To Know More About My</p>
+    <h1 class="title">Accomplished Projects</h1>
+
+    <div class="project-con">
+      <div class="proj-img-con proj-div">
+        <img src="./assets/voltagepic.png" alt="proj-img" class="proj-inner-img"
+          onclick="window.open('assets/voltagevid.mp4', ' _blank')" />
+      </div>
+      <div class="proj-text-con proj-div">
+        <p class="proj-title"><b>Voltage U Pay</b></p>
+        It is a payment system designed specifically for residents of Laguna to conveniently pay their electricity
+        balance.
+        It eliminates the hassles of traditional bill payment methods, offering a seamless and efficient experience.
+      </div>
+    </div>
+
+    <div class="project-con">
+      <div class="proj-img-con proj-div">
+        <img src="./assets/foodsensepic.png" alt="proj-img" class="proj-inner-img"
+          onclick="window.open('file:///C:/Users/Jhamaica%20Sombrano/OneDrive/Documents/Jhamaica%20HTML/Sombrano%20-%20RWD/index.html', ' _blank')" />
+      </div>
+      <div class="proj-text-con proj-div">
+        <p class="proj-title"><b> Food Sense BakeShop </b></p>
+        It is a Menu Interface static for a BakeShop.
+      </div>
+    </div>
+
+    <div class="project-con">
+      <div class="proj-img-con proj-div">
+        <img src="./assets/foodonthego.png" alt="proj-img" class="proj-inner-img"
+          onclick="window.open('http://localhost/fog/fos/' , ' _blank')" />
+      </div>
+      <div class="proj-text-con proj-div">
+        <p class="proj-title"><b>Food On The Go</b></p>
+        Food on the Go is Menu for a online food ordering system designed to bring delicious meals from our restaurants straight to your doorstep. 
+      </div>
+    </div>
+
+    <div class="project-con">
+      <div class="proj-img-con proj-div">
+        <img src="./assets/rider.png" alt="proj-img" class="proj-inner-img"
+          onclick="window.open('http://localhost/fog/cms/' , ' _blank')" />
+      </div>
+      <div class="proj-text-con proj-div">
+        <p class="proj-title"><b>Food On The - Rider Interface</b></p>
+        It is a continuation of the Food On The Go, it is just a rider interface that will deliver your food.
+      </div>
+    </div>
+
+    <div class="project-con">
+      <div class="proj-img-con proj-div">
+        <img src="./assets/ojt.jpg" alt="proj-img" class="proj-inner-img"
+          onclick="window.open('assets/ojtvid.mp4' , ' _blank')" />
+      </div>
+      <div class="proj-text-con proj-div">
+        <p class="proj-title"><b>OJT Monitoring System</b></p>
+        This is OJT Monitoring System for intern student.
+      </div>
+    </div>
+
+
+  </section>
+
+  <section id="about">
+    <p class="section__text__p1">Get To Know More</p>
+    <h1 class="title">About Me</h1>
+    <div class="section-container">
+      <div class="section__pic-container">
+        <img src="./assets/about_me.jpg" alt="Profile picture" class="about-pic" />
+      </div>
+      <div class="about-details-container">
+        <div class="about-containers">
+          <div class="details-container">
+            <img src="./assets/experience.png" alt="Experience icon" class="icon" />
+            <h3>Experience</h3>
+            <p> Programming Skills <br /> Network administration <br />Database management</p>
+          </div>
+          <div class="details-container">
+            <img src="./assets/education.png" alt="Education icon" class="icon" />
+            <h3>Education</h3>
+            <p> 4th Year College Student <br /> Bachelor of Science In <br />Infomation Technology</p>
+          </div>
+        </div>
+        <div class="text-container">
+          <p>
+            I am <b> Jhamaica Nicole Sombrano</b> a <b> 4th year college student </b> taking <b> Bachelor of Science in
+              Information Technology Major in Network administration</b> known for being enthusiastic, approachable and trustworthy.
+            I thrive in collaborative environments where I can share my knowledge
+            and pick up new abilities from others. I find joy in helping people
+            and am always eager to share insights or provide support whenever I can.
+            I see myself as a lifelong learner, a good communicator, and someone
+            who aspires to have a positive impact in both personal and professional contexts.
+            My effective verbal and written communication skills have been useful in expressing
+            ideas to both technical and non-technical audiences. Whether through written documentation,
+            presentations, or interpersonal communication. I am also recognized for my leadership qualities,
+            teamwork, and a commitment to continuous learning.
+          </p>
+        </div>
+      </div>
+    </div>
+    <img />
+  </section>
+  <section id="contact">
+    <p class="section__text__p1">Get in Touch</p>
+    <h1 class="title">Contact Me</h1>
+    <form>
+      <div class="input-box">
+        <div class="input-field field">
+          <input type="text" name="name" required placeholder="Full Name" id="name" class="item" autocomplete="off">
+        </div>
+        <div class="input-field field">
+          <input type="text" name="email" required placeholder="Email Address" id="email" class="item"
+            autocomplete="off">
+        </div>
+      </div>
+
+
+      <div class="input-field field">
+        <input type="text" placeholder="Subject" id="subject" class="item" autocomplete="off">
+
+      </div>
+      </div>
+
+      <div class="textarea-field field">
+        <textarea name="" id="message" cols="30" rows="10" placeholder="Your message" class="item"
+          autocomplete="off"> </textarea>
+
+      </div>
+
+      <button id="sender-btn" type="button" onclick="sendMail()"> Send Message </button>
+    </form>
+
+
+
+  </section>
+  <footer>
+    <nav>
+      <div class="nav-links-container">
+        <ul class="nav-links">
+          <li><a href="#profile">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+    <p>Copyright &#169; 2025 Jhamaica Nicole Sombrano. All Rights Reserved.</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="script.js"></script>
+
+
+<!-- Resume Modal -->
+<div id="cvModal" class="modal">
+  <span class="close" onclick="closeModal()">&times;</span>
+  <div class="modal-body">
+    <img src="./assets/Resume.jpg" alt="My CV" class="cv-img">
+  </div>
+</div>
+
+<style>
+  /* Modal background */
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    animation: fadeIn 0.3s ease-in-out;
+  }
+
+  /* Scrollable container */
+  .modal-body {
+    margin: 3% auto;
+    width: 50%;               /* Lapad ng CV viewer */
+    max-width: 800px;
+    max-height: 85vh;         /* Para hindi lumampas sa screen */
+    overflow-y: auto;         /* Scroll kung mahaba */
+    background: #fff;
+    border-radius: 12px;
+    padding: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.7);
+  }
+
+  /* CV Image */
+  .cv-img {
+    width: 100%;              /* Sakto sa container */
+    border-radius: 8px;
+  }
+
+  /* Close button */
+  .close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: white;
+    font-size: 35px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  .close:hover {
+    color: #ff5555;
+    transform: scale(1.2);
+  }
+
+  /* Animation */
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+</style>
+
+<script>
+  function openModal() {
+    document.getElementById("cvModal").style.display = "block";
+  }
+  function closeModal() {
+    document.getElementById("cvModal").style.display = "none";
+  }
+</script>
+
+  
+</body>
+
+</html>
